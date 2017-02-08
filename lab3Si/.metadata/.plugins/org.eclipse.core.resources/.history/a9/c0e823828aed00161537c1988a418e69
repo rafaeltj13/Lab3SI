@@ -1,0 +1,9 @@
+package com.listaTarefas.ws.controllers;
+
+
+
+@CrossOrigin(origins="*")
+@RestController
+public class TarefaController {;
+
+}

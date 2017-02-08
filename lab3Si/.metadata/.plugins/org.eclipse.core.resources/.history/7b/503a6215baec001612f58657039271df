@@ -1,0 +1,8 @@
+package com.listaTarefas.ws.model;
+
+public class ListaTarefas {
+	
+	private String descricao;
+	private Map<Integer, Tarefa> clientes;
+
+}

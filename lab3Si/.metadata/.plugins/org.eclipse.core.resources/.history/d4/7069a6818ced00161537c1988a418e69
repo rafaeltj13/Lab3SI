@@ -1,0 +1,11 @@
+package com.listaTarefas.ws.controllers;
+
+import com.listaTarefas.ws.model.ListaTarefas;
+
+public class TarefaController {
+	
+	private Tarefa addTarefa(ListaTarefas listaTarefas, Tarefa tarefa){
+		
+		return tarefa
+	}
+}

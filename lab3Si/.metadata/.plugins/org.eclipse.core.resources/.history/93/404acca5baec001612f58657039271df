@@ -1,0 +1,25 @@
+package com.listaTarefas.ws.model;
+
+import java.util.Map;
+
+public class ListaTarefas {
+	
+	private String descricao;
+	private Map<Integer, Tarefa> clientes;
+	
+	public String getDescricao() {
+		return descricao;
+	}
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+	public Map<Integer, Tarefa> getClientes() {
+		return clientes;
+	}
+	public void setClientes(Map<Integer, Tarefa> clientes) {
+		this.clientes = clientes;
+	}
+	
+	
+
+}

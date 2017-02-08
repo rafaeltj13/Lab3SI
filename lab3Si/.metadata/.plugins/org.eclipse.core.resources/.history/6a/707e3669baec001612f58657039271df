@@ -1,0 +1,10 @@
+package com.listaTarefas.ws.model;
+
+import java.util.Map;
+
+public class ListaTarefas {
+	
+	private String descricao;
+	private Map<Integer, Tarefa> clientes;
+
+}

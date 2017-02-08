@@ -1,0 +1,12 @@
+package com.listaTarefas.ws.controllers;
+
+import com.listaTarefas.ws.model.ListaTarefas;
+import com.listaTarefas.ws.model.Tarefa;
+
+public class TarefaController {
+	
+	private Tarefa addTarefa(Tarefa tarefa){
+		tarefa.getTaskList().getTasks().add(tarefa);
+		return tarefa;
+	}
+}

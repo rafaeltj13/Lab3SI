@@ -1,0 +1,26 @@
+package com.listaTarefas.ws.model;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class ListaTarefas {
+	
+	private String descricao;
+	private Map<Integer, Tarefa> listaTarefas = new HashMap<>();
+	
+	public String getDescricao() {
+		return descricao;
+	}
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+	public Map<Integer, Tarefa> getClientes() {
+		return listaTarefas;
+	}
+	public void setClientes(Map<Integer, Tarefa> clientes) {
+		this.listaTarefas = clientes;
+	}
+	
+	
+
+}

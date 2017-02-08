@@ -1,0 +1,29 @@
+package com.listaTarefas.ws.controllers;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.listaTarefas.ws.model.ListaTarefas;
+import com.listaTarefas.ws.model.Tarefa;
+
+@CrossOrigin(origins="*")
+@RestController
+public class TarefaController {
+
+	private ListaController lista;
+	private ListaTarefas actualTaskList;
+	private int index;
+	
+	private ListaTarefas addTarefa(Tarefa tarefa, int indexListaTarefas){
+		
+		actualTaskList = lista.buscarListaTarefasPorIndex(indexListaTarefas);
+		
+		actualTaskList.getTasks().add(tarefa);
+		index++;
+		
+		return listaTarefas;
+	}
+}

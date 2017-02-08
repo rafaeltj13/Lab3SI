@@ -1,0 +1,12 @@
+package com.listaTarefas.ws.controllers;
+
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RestController;
+
+@CrossOrigin(origins="*")
+@RestController
+public class TarefaController {;
+
+	private List<Tarefa> taskList = new ArrayList<>();
+
+}

@@ -1,0 +1,9 @@
+package com.listaTarefas.ws.model;
+
+public class Tarefa {
+	
+	private int id;
+	private String descricao;
+	private String[] subTarefas;
+
+}

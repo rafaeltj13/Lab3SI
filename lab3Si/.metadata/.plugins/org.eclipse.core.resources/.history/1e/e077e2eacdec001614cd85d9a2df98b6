@@ -1,0 +1,20 @@
+package com.listaTarefas.ws.model;
+
+import java.util.ArrayList;
+
+public class Tarefa {
+	
+	private String taskDescription = "";
+	private ArrayList<String> subTasks = new ArrayList<>();
+	
+
+	public ArrayList<String> getSubTarefas() {
+		return subTarefas;
+	}
+	public void setSubTarefas(ArrayList<String> subTarefas) {
+		this.subTarefas = subTarefas;
+	}
+	
+	
+
+}

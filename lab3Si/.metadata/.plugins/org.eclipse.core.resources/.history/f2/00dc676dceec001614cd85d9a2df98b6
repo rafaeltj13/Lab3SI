@@ -1,0 +1,33 @@
+package com.listaTarefas.ws.model;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class ListaTarefas {
+	
+	private String description = "";
+	private Map<Integer, Tarefa> tasks = new HashMap<>();
+	private int index = 0;
+	
+	public String getDescricao() {
+		return descricao;
+	}
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+	public Map<Integer, Tarefa> getListaTarefas() {
+		return listaTarefas;
+	}
+	public void setListaTarefas(Map<Integer, Tarefa> listaTarefas) {
+		this.listaTarefas = listaTarefas;
+	}
+	public int getIndex() {
+		return index;
+	}
+	public void setIndex(int index) {
+		this.index = index;
+	}
+	
+	
+
+}

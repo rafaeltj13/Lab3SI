@@ -1,0 +1,32 @@
+package com.listaTarefas.ws.model;
+
+import java.util.ArrayList;
+
+public class Tarefa {
+	
+	private int id;
+	private String descricao;
+	private ArrayList<String> subTarefas;
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getDescricao() {
+		return descricao;
+	}
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+	public ArrayList<String> getSubTarefas() {
+		return subTarefas;
+	}
+	public void setSubTarefas(ArrayList<String> subTarefas) {
+		this.subTarefas = subTarefas;
+	}
+	
+	
+
+}

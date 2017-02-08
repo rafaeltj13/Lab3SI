@@ -1,0 +1,7 @@
+package com.listaTarefas.ws.model;
+
+public class SubTask {
+	
+	private String taskDescription = "";
+
+}

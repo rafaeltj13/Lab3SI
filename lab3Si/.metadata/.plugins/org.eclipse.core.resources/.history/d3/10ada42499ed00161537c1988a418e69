@@ -1,0 +1,98 @@
+package com.listaTarefas.ws.controllers;
+
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.listaTarefas.ws.model.ListaTarefas;
+import com.listaTarefas.ws.model.SubTarefa;
+import com.listaTarefas.ws.model.Tarefa;
+
+@CrossOrigin(origins="*")
+@RestController
+public class ListaController {
+	
+	private Map<Integer, ListaTarefas> lista = new HashMap<>();
+	private int index = 0;
+	
+	private ListaTarefas addListaTarefas(ListaTarefas listaTarefas){
+		
+		lista.put(index, listaTarefas);
+		index++;
+		
+		return listaTarefas;
+	}
+	
+	private Collection<ListaTarefas> buscarTodasListasTarefas(){
+		return lista.values();
+	}
+	
+	private void excluirListaTarefas(int id){
+		lista.remove(id);
+	}
+	
+	public ListaTarefas buscarListaTarefasPorIndex(int index){
+		return lista.get(index);
+	}
+	
+	@RequestMapping(method=RequestMethod.POST, value="/listaTarefas", consumes=org.springframework.http.MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<ListaTarefas> adicionarListaTarefas(@RequestBody ListaTarefas listaTarefas){
+		ListaTarefas novaListaTarefas = addListaTarefas(listaTarefas);
+		return new ResponseEntity<>(novaListaTarefas, HttpStatus.CREATED);
+	}
+	
+	@RequestMapping(method=RequestMethod.GET, value="/listaTarefas", produces=org.springframework.http.MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Collection<ListaTarefas>> buscarTodasListasDeTarefas(){
+		Collection<ListaTarefas> listasDeTarefas = buscarTodasListasTarefas();
+		return new ResponseEntity<>(listasDeTarefas, HttpStatus.OK);
+	}
+	
+	@RequestMapping(method=RequestMethod.DELETE, value="/listaTarefas/{id}")
+	public ResponseEntity<ListaTarefas> excluirListaDeTarefas(@PathVariable int id){
+		ListaTarefas listaTarefasEncontrada = buscarListaTarefasPorIndex(id);
+		
+		if(listaTarefasEncontrada == null){
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+		excluirListaTarefas(id);
+		return new ResponseEntity<>(HttpStatus.OK);
+	}
+	
+	/////////////////////////////////////////////////////////////////////////////////////////
+	
+	private Tarefa addTarefa(Tarefa tarefa){
+		ListaTarefas lista = buscarListaTarefasPorIndex(tarefa.getIdTaskList());
+		lista.getTasks().add(tarefa);
+		return tarefa;
+	}
+	
+	@RequestMapping(method=RequestMethod.POST, value="/tarefa", consumes=org.springframework.http.MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Tarefa> adicionarTarefa(@RequestBody Tarefa tarefa){
+		Tarefa novaTarefa = addTarefa(tarefa);
+		return new ResponseEntity<>(novaTarefa, HttpStatus.CREATED);
+	}
+	
+	///////////////////////////////////////////////////////////////////////////////////////////
+	
+	private SubTarefa addSubTarefa(SubTarefa subtarefa){
+		ListaTarefas lista = buscarListaTarefasPorIndex(subtarefa.getIdTaskList());
+		lista.getTasks().get(subtarefa.getIdTask()).getSubTasks().add(subtarefa);
+		
+		return subtarefa;
+	}
+	
+	@RequestMapping(method=RequestMethod.POST, value="/subTarefa", consumes=org.springframework.http.MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<SubTarefa> adicionarSubTarefa(@RequestBody SubTarefa subtarefa){
+		SubTarefa novaSubTarefa = addSubTarefa(subtarefa);
+		return new ResponseEntity<>(novaSubTarefa, HttpStatus.CREATED);
+	}
+}

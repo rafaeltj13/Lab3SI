@@ -1,0 +1,24 @@
+package com.listaTarefas.ws.model;
+
+public class SubTarefa {
+	
+	private String subTaskDescription = "";
+	private int idTask;
+	private int idTaskList;
+	
+	public String getSubTaskDescription() {
+		return subTaskDescription;
+	}
+	public void setSubTaskDescription(String subTaskDescription) {
+		this.subTaskDescription = subTaskDescription;
+	}
+	public Tarefa getIdTask() {
+		return idTask;
+	}
+	public void setIdTask(Tarefa idTask) {
+		this.idTask = idTask;
+	}
+	
+	
+
+}

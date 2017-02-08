@@ -1,0 +1,5 @@
+package com.listaTarefas.ws.model;
+
+public class Tarefa {
+
+}

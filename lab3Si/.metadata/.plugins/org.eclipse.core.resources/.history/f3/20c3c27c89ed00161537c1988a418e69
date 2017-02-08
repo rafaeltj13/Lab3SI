@@ -1,0 +1,36 @@
+package com.listaTarefas.ws.controllers;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.listaTarefas.ws.model.ListaTarefas;
+import com.listaTarefas.ws.model.Tarefa;
+
+@CrossOrigin(origins="*")
+@RestController
+public class TarefaController {
+
+	private ListaController lista;
+	private ListaTarefas actualTaskList;
+	
+	private Tarefa addTarefa(Tarefa tarefa, int indexListaTarefas){
+		
+		actualTaskList = lista.buscarListaTarefasPorIndex(indexListaTarefas);
+		System.out.println(actualTaskList);
+		actualTaskList.getTasks().add(tarefa);
+		
+		return tarefa;
+	}
+	
+	@RequestMapping(method=RequestMethod.POST, value="/tarefas/{id}", consumes=org.springframework.http.MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Tarefa> adicionarTarefa(@RequestBody Tarefa novaTarefa,@PathVariable int id){
+		Tarefa tarefa = addTarefa(novaTarefa, id);
+		return new ResponseEntity<>(tarefa, HttpStatus.CREATED);
+	}
+}
